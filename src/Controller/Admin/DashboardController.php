@@ -3,7 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Admin;
-use App\Entity\Product;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Locale;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -94,6 +93,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
 //        yield MenuItem::linkToCrud('Produkte', 'fa fa-box', Product::class);
         yield MenuItem::section();
-        yield MenuItem::linkToCrud('Benutzer', 'fa fa-user', Admin::class);
+        yield MenuItem::linkToCrud('Benutzer', 'fa fa-user', Admin::class)
+            ->setPermission('ROLE_SUPER_ADMIN');
     }
 }
